@@ -7,13 +7,13 @@ struct conjunto_de_testes {
 
 struct teste {
 	int posicao_teste;
-	int *valor_teste;
+	int *valores_teste;
 };
 
 
 int main(){
 	
-	int linhas, colunas, i, j, num_teste, *int_entrada, *int_resultados, temp;	
+	int linhas, colunas, i, j, num_teste, *int_entrada, *p_teste, temp;	
 
 	scanf("%d", &linhas);
 	num_teste = 1;
@@ -29,14 +29,18 @@ int main(){
 
 		
 		int_entrada = (int *)malloc(sizeof(int) * colunas * linhas);
-		int_resultados = (int *)malloc(linhas * sizeof(int));
+		//int_resultados = (int *)malloc(linhas * sizeof(int));
 
+		
 		//a cada vez que digitar o valor de n criar struct teste
 		t_teste teste;
 
 		teste.posicao_teste = num_teste;
-		//teste.valor_teste = 8;
+		teste.valores_teste = int_entrada;
 		
+		printf("endereco de ponteiro int_entrada %p\n", int_entrada);
+		printf("endereco de int_entrada %d\n", &int_entrada);
+		printf("endereco de teste.valores_teste %d\n", teste.valores_teste);
 
 		for (i = 0; i < linhas; i++) {
 			for (j = 0; j < colunas; j += 2) {
@@ -60,7 +64,7 @@ int main(){
 		//printf("Posicao na memória %d\n", teste.valor_teste);
 				
 		free(int_entrada);
-		free(int_resultados);
+		//free(int_resultados);
 		
 		// adicionar o teste ao struct conjunto de testes
 
