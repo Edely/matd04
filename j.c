@@ -24,26 +24,26 @@ int main(int argc, char *argv[]) {
 	scanf("%d %d", &S, &I);
 	t_soldado lista_soldados[100];
 
-	printf("\n");
+	//printf("\n");
 	//printf("%d %d\n", S, I);
 	
 
 	//ler os nomes
 	for(i = 0; i < S; i++){
-		printf("%d\n", i);
+		//printf("%d\n", i);
 		scanf("%c", &temp);
 		scanf("%[^\n]", (lista_soldados[i]).nome );
 	}
 
-	printf("\n");
+	//printf("\n");
 
 	for (i = 0; i < S; i++) {
-		printf("Valor de I: %d\n", I);
-		printf("Valor de i: %d\n", i);
+		//printf("Valor de I: %d\n", I);
+		//printf("Valor de i: %d\n", i);
 
 		if ((i + 1) == I) {
-			printf("\nGANHADOOOOORRRR, POORRAAAA!!!\n");
-			printf("%s\n", (lista_soldados[i]).nome);
+			//printf("\nGANHADOOOOORRRR, POORRAAAA!!!\n");
+			printf("%s", (lista_soldados[i]).nome);
 		}
 		
 		
