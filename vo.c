@@ -7,6 +7,7 @@ struct conjunto_de_testes {
 
 struct teste {
 	int posicao_teste;
+	//ponteiro onde será armazenado o endereço de cada conjunto de testes - int_entrada 
 	int *valores_teste;
 };
 
