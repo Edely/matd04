@@ -20,34 +20,29 @@ typedef struct soldado t_soldado;
 int main(int argc, char *argv[]) {
 	//ler primeira linha
 	int S, I, i;
-	char temp;
-	scanf("%d %d", &S, &I);
+	char nome_temp[20];
 	t_soldado lista_soldados[100];
+	t_soldado lista_soldados_ordenada[100];
 
-	//printf("\n");
-	//printf("%d %d\n", S, I);
+	//ler numer de soldados e vencedor
+	scanf("%d %d", &S, &I);
 	
-
 	//ler os nomes
 	for(i = 0; i < S; i++){
-		//printf("%d\n", i);
 		scanf("%c", &temp);
 		scanf("%[^\n]", (lista_soldados[i]).nome );
 	}
-
-	//printf("\n");
-
-	for (i = 0; i < S; i++) {
-		//printf("Valor de I: %d\n", I);
-		//printf("Valor de i: %d\n", i);
-
-		if ((i + 1) == I) {
-			//printf("\nGANHADOOOOORRRR, POORRAAAA!!!\n");
-			printf("%s", (lista_soldados[i]).nome);
+	/*
+	for (i = 1; i <= S; i++) {
+		if (i == 0) {
+			(lista_soldados_ordenada[i]).nome = (lista_soldados[i]).nome
 		}
-		
+		else (lista_soldados_ordenada[i]).nome[0] = (lista_soldados[i]).nome[0]) {
+			//printf("\nGANHADOOOOORRRR, POORRAAAA!!!\n");
+			printf("%s\n", (lista_soldados[i]).nome);
+		}		
 		
 	}
-	
+	*/
 	return 0;
 }
