@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 
 	printf("\n");
 	//printf("%d %d\n", S, I);
-	printf("Valor de I: %dn", I);
+	
 
 	//ler os nomes
 	for(i = 0; i < S; i++){
@@ -38,9 +38,15 @@ int main(int argc, char *argv[]) {
 	printf("\n");
 
 	for (i = 0; i < S; i++) {
-		if ((i + 1) == I)
+		printf("Valor de I: %d\n", I);
+		printf("Valor de i: %d\n", i);
+
+		if ((i + 1) == I) {
 			printf("\nGANHADOOOOORRRR, POORRAAAA!!!\n");
-		printf("%s\n", (lista_soldados[i]).nome);
+			printf("%s\n", (lista_soldados[i]).nome);
+		}
+		
+		
 	}
 	
 	return 0;
