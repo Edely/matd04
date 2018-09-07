@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct soldado{
 	char nome[20];
@@ -20,9 +21,10 @@ typedef struct soldado t_soldado;
 int main(int argc, char *argv[]) {
 	//ler primeira linha
 	int S, I, i;
+	char temp;
 	char nome_temp[20];
 	t_soldado lista_soldados[100];
-	t_soldado lista_soldados_ordenada[100];
+	char lista_soldados_ordenada[100][20];
 
 	//ler numer de soldados e vencedor
 	scanf("%d %d", &S, &I);
@@ -30,7 +32,17 @@ int main(int argc, char *argv[]) {
 	//ler os nomes
 	for(i = 0; i < S; i++){
 		scanf("%c", &temp);
-		scanf("%[^\n]", (lista_soldados[i]).nome );
+		//scanf("%[^\n]", (lista_soldados[i]).nome );
+		scanf("%[^\n]", (lista_soldados_ordenada[i]) );
+	}
+
+	qsort(lista_soldados_ordenada, S, 20, strcmp);
+
+	for(i = 0; i < S; i++){
+		if(i+1 == I){
+			printf("%s\n", lista_soldados_ordenada[i]);
+		}
+		
 	}
 	/*
 	for (i = 1; i <= S; i++) {
