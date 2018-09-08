@@ -4,7 +4,10 @@
 
 int main(int argc, char *argv[]){
 
-    int N, P, inteiro, resto;
+    int N, P, inteiro, resto, i;
+
+    char ini[2] = {'P', '\0'};
+    char fim[4] = {'d', 'l', 'e', '\0'};
 
     scanf("%d %d", &N, &P);
 
@@ -24,7 +27,14 @@ int main(int argc, char *argv[]){
             printf("Poooooooooooooooodle\n");
         }
         else{
-            printf("tem que ver isso ai\n");
+            printf("%s", ini);
+            resto = inteiro - 4;
+
+            for(i = 0;i < resto; i++){
+                printf("o");
+            }
+
+            printf("%s\n", fim);
         }
         scanf("%d %d", &N, &P);
     }
