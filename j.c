@@ -27,19 +27,21 @@ int main(int argc, char *argv[]) {
 	//ler numer de soldados e vencedor
 	scanf("%d %d", &S, &I);
 	
-	//ler os nomes
-	for(i = 0; i < S; i++){
-		scanf("%c", &temp);
-		scanf("%[^\n]", (lista_soldados_ordenada[i]) );
-	}
-
-	qsort(lista_soldados_ordenada, S, 20, comparastring);
-
-	for(i = 0; i < S; i++){
-		if(i+1 == I){
-			printf("%s\n", lista_soldados_ordenada[i]);
+	if(1<=I && I<=S && S<=100){
+		//ler os nomes
+		for(i = 0; i < S; i++){
+			scanf("%c", &temp);
+			scanf("%[^\n]", (lista_soldados_ordenada[i]) );
 		}
-		
+
+		qsort(lista_soldados_ordenada, S, 20, comparastring);
+
+		for(i = 0; i < S; i++){
+			if(i+1 == I){
+				printf("%s\n", lista_soldados_ordenada[i]);
+			}		
+		}
 	}
+	
 	return 0;
 }
