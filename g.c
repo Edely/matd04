@@ -13,12 +13,8 @@ int main(int argc, char *argv[]){
 
     while(! ((N == 0) && (P == 0)) ){
 
-        printf("%d %d\n", N, P);
-
         inteiro = N / P;
         inteiro += N % P > 0 ? 1: 0;
-
-        printf("Inteiro: %d\n", inteiro);
 
         if(inteiro <=6){
             printf("Poodle\n");
@@ -28,6 +24,7 @@ int main(int argc, char *argv[]){
         }
         else{
             printf("%s", ini);
+            
             resto = inteiro - 4;
 
             for(i = 0;i < resto; i++){
