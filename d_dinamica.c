@@ -4,7 +4,6 @@
 //digitos
 struct digito{
     int valor;
-    struct digito* anterior;
     struct digito* proximo;
 };
 
@@ -50,10 +49,142 @@ int lista_vazia(Lista *li){
     return 0;
 }
 
-int insere_lista_inicio(Lista *li, struct digito Elemento){
+int insere_lista_inicio(Lista *li, int proximo_numero){
     if(li == NULL) return 0;
-    Elemento *no = (Elemento*) malloc(sizeof(Elemento));
+    Elemento *no = malloc( sizeof(Elemento) );
+    if(no == NULL) return 0;
+    no->valor = proximo_numero;
+    no->proximo = (*li);
+    return 1;
 }
+
+int insere_lista_fim(Lista *li, int proximo_numero){
+    if(li == NULL) return 0;
+    Elemento *no = malloc( sizeof(Elemento) );
+    if(no == NULL) return 0;
+    no->valor = proximo_numero;
+    no->proximo = NULL;
+    if( (*li) == NULL ){
+        *li = no;
+    }else{
+        Elemento *aux = *li;
+        while(aux->proximo != NULL){
+            aux = aux-> proximo;
+        }
+        aux->proximo = no;
+    }
+    return 1;
+}
+
+int insere_lista_ordenada(Lista *li, int proximo_numero){
+    if(li == NULL) return 0;
+    Elemento *no = malloc( sizeof(Elemento) );
+    if(no == NULL) return 0;
+    no->valor = proximo_numero; 
+    if( (*li) == NULL ){
+        no->proximo == NULL;
+        *li == no;
+        return 1;
+    }
+    else{
+        Elemento *ant, *atual = *li;
+        while(atual != NULL && atual->valor < proximo_numero){
+            ant = atual;
+            atual = atual->proximo;
+        }
+
+        if(atual == *li){
+            no->proximo = (*li);
+            *li = no;
+        }else{
+            no->proximo = ant->proximo;
+            ant->proximo = no;
+        }
+
+        return 1;
+    }
+    return 1;
+}
+
+int remocao_lista_inicio(Lista *li){
+    if(li == NULL) return 0;
+    if((*li) == NULL) return 0;
+    Elemento *no = *li;
+    *li = no->proximo;
+    free(no);
+    return 1;
+}
+
+int remocao_lista_final(Lista *li){
+    if(li == NULL) return 0;
+    if((*li) == NULL) return 0;
+    Elemento *ant, *no = *li;
+    while(no->proximo != NULL){
+        ant = no;
+        no = no->proximo;
+    }
+    if(no == (*li))
+        *li = no->proximo;
+    else    
+        ant->proximo = no->proximo;
+    free(no);
+    return 1;
+}
+
+int remocao_lista_elemento(Lista *li, int val){
+    if(li == NULL) return 0;
+    if((*li) == NULL) return 0;
+    Elemento *no, *ant = *li;
+    while(no != NULL && no->valor != val ){
+        ant = no;
+        no = no->proximo;
+    }
+    if(no == NULL) return 0;
+    if(no == *li)
+        *li = no->proximo;
+    else
+        ant->proximo = no->proximo;
+    free(no);    
+    return 1;
+}
+
+int consulta_lista_posicao(Lista *li, int pos){
+    if( li == NULL || pos < 0 ) return 0;
+    Elemento *no = *li;
+    int i = 0;
+    while(no != NULL && i < pos){
+        no = no->proximo;
+        i++;
+    }
+    if(no == NULL)
+        return 0; 
+    else return no->valor;
+}
+
+int consulta_lista_valor(Lista *li, int val){
+    if( li == NULL ){
+        //printf("here\n");
+        return  0;
+    } 
+    Elemento *no = *li;
+    int posicao = 0;
+
+    //printf("aqui\n");
+    while( no != NULL && no->valor != val){
+        no = no->proximo;
+        posicao ++;
+    }
+    //printf("aca\n");
+    if(no == NULL){
+        //printf("aala\n");
+        return 0;
+    }   
+    else{
+        //printf("ca\n");
+        return posicao;
+    } 
+}
+
 
 int main(int argc, char *argv[]){
 
@@ -62,9 +193,34 @@ int main(int argc, char *argv[]){
 
     li = cria_lista();
 
-    tam = tamanho_lista(li);
-    vazia = tamanho_lista(li);
+    //tam = tamanho_lista(li);
+    //vazia = tamanho_lista(li);
     
-    libera_lista(li);
+    //libera_lista(li);
+
+    //insere_lista_inicio(li, 5);
+    insere_lista_fim(li, 1);
+    insere_lista_fim(li, 5);
+    insere_lista_fim(li, 3);
+
+    int valor_retornado = consulta_lista_posicao(li, 2);
+    printf("%d\n", valor_retornado);
+    //remove_lista_inicio(li);
+    remocao_lista_final(li);
+    valor_retornado = consulta_lista_posicao(li, 2);
+    printf("%d\n", valor_retornado);
+
+    insere_lista_fim(li, 6);
+    valor_retornado = consulta_lista_posicao(li, 2);
+    printf("%d\n", valor_retornado);
+
+    insere_lista_inicio(li, 8);
+    valor_retornado = consulta_lista_posicao(li, 0);
+    printf("%d\n", valor_retornado);
+
+    //int valor_retornado = consulta_lista_valor(li, 5);
+
+    
+
     return 0;
 }
