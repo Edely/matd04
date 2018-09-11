@@ -50,11 +50,19 @@ int lista_vazia(Lista *li){
 }
 
 int insere_lista_inicio(Lista *li, int proximo_numero){
-    if(li == NULL) return 0;
+    if(li == NULL) {
+        printf("here\n");
+        return 0;
+    }
     Elemento *no = malloc( sizeof(Elemento) );
-    if(no == NULL) return 0;
+    if(no == NULL) {
+        printf("ACA\n");
+        return 0;
+    }
     no->valor = proximo_numero;
     no->proximo = (*li);
+    *li = no;
+    printf("aqui\n");
     return 1;
 }
 
@@ -185,6 +193,18 @@ int consulta_lista_valor(Lista *li, int val){
     } 
 }
 
+int retorna_todos_valores(Lista *li){
+    if(li == NULL) return 0;
+    if((*li) == NULL) return 0;
+    Elemento *no = *li;
+    printf("Valores da lista:\n ");
+    while(no != NULL){
+        printf("%d ", no->valor);
+        no = no->proximo;
+    }
+    printf("\n");
+    return 0;
+}
 
 int main(int argc, char *argv[]){
 
@@ -203,20 +223,24 @@ int main(int argc, char *argv[]){
     insere_lista_fim(li, 5);
     insere_lista_fim(li, 3);
 
-    int valor_retornado = consulta_lista_posicao(li, 2);
-    printf("%d\n", valor_retornado);
+    retorna_todos_valores(li);
+    //int valor_retornado = consulta_lista_posicao(li, 2);
+    //printf("%d\n", valor_retornado);
     //remove_lista_inicio(li);
     remocao_lista_final(li);
-    valor_retornado = consulta_lista_posicao(li, 2);
-    printf("%d\n", valor_retornado);
+    //printf("%d\n", valor_retornado);
+    retorna_todos_valores(li);
 
     insere_lista_fim(li, 6);
-    valor_retornado = consulta_lista_posicao(li, 2);
-    printf("%d\n", valor_retornado);
+    //valor_retornado = consulta_lista_posicao(li, 2);
+    //printf("%d\n", valor_retornado);
+    retorna_todos_valores(li);
 
     insere_lista_inicio(li, 8);
-    valor_retornado = consulta_lista_posicao(li, 0);
-    printf("%d\n", valor_retornado);
+    //valor_retornado = consulta_lista_posicao(li, 2);
+    //printf("%d\n", valor_retornado);
+
+    retorna_todos_valores(li);
 
     //int valor_retornado = consulta_lista_valor(li, 5);
 
